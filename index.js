@@ -18,6 +18,47 @@ const tempCard = fs.readFileSync(
   "utf-8"
 );
 
-const quotes = fs.readFileSync(`${__dirname}/dev-data/quotes.json`, "utf-8");
-const quotesData = JSON.parse(quotes);
+let quotesData;
+try {
+  const quotes = fs.readFileSync(`${__dirname}/dev-data/quotes.json`, "utf-8");
+  quotesData = JSON.parse(quotes);
+} catch (error) {
+  console.error("Error parsing quotes.json:", error);
+}
+
 console.log(quotesData);
+
+const server = http.createServer((req, res) => {
+  const { query, pathname } = url.parse(req.url, true);
+
+  // Overview page
+  if (pathname === "/" || pathname === "/overview") {
+    res.writeHead(200, { "Content-type": "text/html" });
+
+    const cardsHtml = quotesData
+      .map((el) => replaceTemplate(tempCard, el))
+      .join("");
+
+    const output = tempOverview.replace("%QUOTE_CARDS%", cardsHtml);
+    res.end(output);
+  }
+
+  // API
+  else if (pathname === "/api") {
+    res.writeHead(200, { "Content-type": "application/json" });
+    res.end(quotes);
+  }
+
+  // Not found
+  else {
+    res.writeHead(404, {
+      "Content-type": "text/html",
+      "my-own-header": "hello-world",
+    });
+    res.end("<h1>Page not found!</h1>");
+  }
+});
+
+server.listen(8000, "127.0.0.1", () => {
+  console.log("Listening to requests on port 8000");
+});
