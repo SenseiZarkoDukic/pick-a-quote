@@ -18,6 +18,11 @@ const tempCard = fs.readFileSync(
   "utf-8"
 );
 
+const tempRandomQuote = fs.readFileSync(
+  `${__dirname}/templates/template-random-quote.html`,
+  "utf-8"
+);
+
 let quotesData;
 try {
   const quotes = fs.readFileSync(`${__dirname}/dev-data/quotes.json`, "utf-8");
@@ -30,6 +35,18 @@ console.log(quotesData);
 
 const server = http.createServer((req, res) => {
   const { query, pathname } = url.parse(req.url, true);
+
+  // New endpoint for getting a random quote
+  if (pathname === "/random-quote") {
+    const randomIndex = Math.floor(Math.random() * quotesData.length);
+    const randomQuote = quotesData[randomIndex];
+
+    res.writeHead(200, { "Content-Type": "text/html" });
+    const randomHtml = replaceTemplate(tempRandomQuote, randomQuote);
+    const output = tempRandomQuote.replace("%RANDOM-QUOTE%", randomHtml);
+    res.end(output);
+    return;
+  }
 
   // Overview page
   if (pathname === "/" || pathname === "/overview") {

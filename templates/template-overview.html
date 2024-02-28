@@ -1,6 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+      .link_container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 3rem;
+      }
+      .random_quote__link:link,
+      .random_quote__link:visited {
+        display: block;
+        background-color: #79e17b;
+        color: white;
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem;
+        text-align: center;
+        transform: scale(1.07) skewX(-20deg);
+        box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+      }
+
+      .random_quote__link:hover,
+      .random_quote__link:active {
+        background-color: #9be15d;
+        transform: scale(1.1) skewX(-20deg);
+      }
+    </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pick a Quote</title>
@@ -9,6 +40,9 @@
   <body>
     <div class="container">
       <h1>Pick a Quote</h1>
+      <div class="link_container">
+        <a href="/random-quote" class="random_quote__link">Random Quote</a>
+      </div>
 
       <div class="cards-container">%QUOTE_CARDS%</div>
     </div>
