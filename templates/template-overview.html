@@ -2,9 +2,24 @@
 <html lang="en">
   <head>
     <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      .container {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 5rem 0;
+      }
       .link_container {
         display: flex;
-        justify-content: space-between;
+        justify-content: start;
+        /* align-self: center; */
         margin-bottom: 3rem;
       }
       .random_quote__link:link,
@@ -31,20 +46,107 @@
         background-color: #9be15d;
         transform: scale(1.1) skewX(-20deg);
       }
+
+      .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+      }
+      /* .card {
+        background-color: #fff;
+        box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.1);
+        border-radius: 1rem;
+        overflow: hidden;
+        width: 30rem;
+        height: 20rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        position: relative;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #79e17b;
+        clip-path: polygon(0 0, 100% 0, 100% 15%, 0 100%);
+        z-index: -1;
+      }
+      .card__quote {
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-align: center;
+        color: #fff;
+        margin-bottom: 2rem;
+      }
+      .card__author {
+        font-size: 1.4rem;
+        font-weight: 300;
+        text-align: center;
+        color: #fff;
+      }
+      .card__quote,
+      .card__author {
+        position: relative;
+        z-index: 1;
+      } */
+
+      @keyframes move {
+        0% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(70%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      #animate-button {
+        animation: move 10s infinite;
+      }
     </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pick a Quote</title>
-    <style></style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
       <h1>Pick a Quote</h1>
-      <div class="link_container">
-        <a href="/random-quote" class="random_quote__link">Get Your Quote</a>
+      <div class="link_container" id="animate-button">
+        <a href="/random-quote" class="random_quote__link"
+          >Get Your Daily Quote</a
+        >
       </div>
 
-      <div class="cards-container">%QUOTE_CARDS%</div>
+      <button id="show-all-quotes-button" class="random_quote__link">
+        Show All Quotes
+      </button>
+
+      <div class="cards-container" id="cards-container" style="display: none">
+        %QUOTE_CARDS%
+      </div>
     </div>
+    <script>
+      document
+        .getElementById("show-all-quotes-button")
+        .addEventListener("click", function () {
+          const cardsContainer = document.getElementById("cards-container");
+          if (cardsContainer.style.display === "none") {
+            cardsContainer.style.display = "block";
+          } else cardsContainer.style.display = "none";
+        });
+    </script>
   </body>
 </html>

@@ -1,2 +1,44 @@
+<style>
+  .random-quote {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .random-author {
+    font-size: 1.6rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .random_quote__link:link,
+  .random_quote__link:visited {
+    display: block;
+    background-color: #79e17b;
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem;
+    text-align: center;
+    transform: scale(1.07) skewX(-20deg);
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+
+  .random_quote__link:hover,
+  .random_quote__link:active {
+    background-color: #9be15d;
+    transform: scale(1.1) skewX(-20deg);
+  }
+</style>
+
 <div class="random-quote">%RANDOM-QUOTE%</div>
 <div class="random-author">%RANDOM-AUTHOR%</div>
+<a href="/overview" class="random_quote__link">Back to Overview</a>

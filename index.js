@@ -36,11 +36,11 @@ const server = http.createServer((req, res) => {
 
   // New endpoint for getting a random quote
   if (pathname === "/random-quote") {
+    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
     const randomIndex = Math.floor(Math.random() * quotesData.length);
     const randomQuote = quotesData[randomIndex];
     const randomAuthor = randomQuote.author;
-    res.writeHead(200, { "Content-Type": "text/html" });
-    const randomHtml = replaceTemplate(tempRandomQuote, randomQuote);
+
     let output = tempRandomQuote.replace("%RANDOM-QUOTE%", randomQuote.quote);
     output = output.replace("%RANDOM-AUTHOR%", randomAuthor);
     res.end(output);
@@ -49,7 +49,7 @@ const server = http.createServer((req, res) => {
 
   // Overview page
   if (pathname === "/" || pathname === "/overview") {
-    res.writeHead(200, { "Content-type": "text/html" });
+    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
 
     const cardsHtml = quotesData
       .map((el) => replaceTemplate(tempCard, el))
