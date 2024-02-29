@@ -10,11 +10,19 @@
         background-color: #f4f4f4;
         color: #333;
       }
+
+      .header {
+        color: rgb(11, 73, 123);
+        background-color: rgb(146, 205, 253);
+      }
       .container {
         width: 80%;
+        display: flex;
+        flex-direction: column;
         margin: 0 auto;
         text-align: center;
         padding: 5rem 0;
+        background-color: rgb(230, 244, 255);
       }
       .link_container {
         display: flex;
@@ -22,6 +30,7 @@
         /* align-self: center; */
         margin-bottom: 3rem;
       }
+
       .random_quote__link:link,
       .random_quote__link:visited {
         display: block;
@@ -52,6 +61,23 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 2rem;
+      }
+
+      .show_all_quotes__link {
+        display: block;
+        background-color: #79e17b;
+        color: white;
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem;
+        text-align: center;
+        transform: scale(1.07) skewX(-20deg);
+        box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
+
+        transition: all 0.3s;
+        margin-top: 3rem;
       }
       /* .card {
         background-color: #fff;
@@ -123,14 +149,14 @@
   </head>
   <body>
     <div class="container">
-      <h1>Pick a Quote</h1>
+      <h1 class="header">Pick a Quote</h1>
       <div class="link_container" id="animate-button">
         <a href="/random-quote" class="random_quote__link"
           >Get Your Daily Quote</a
         >
       </div>
 
-      <button id="show-all-quotes-button" class="random_quote__link">
+      <button id="show-all-quotes-button" class="show_all_quotes__link">
         Show All Quotes
       </button>
 
