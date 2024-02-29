@@ -31,8 +31,6 @@ try {
   console.error("Error parsing quotes.json:", error);
 }
 
-console.log(quotesData);
-
 const server = http.createServer((req, res) => {
   const { query, pathname } = url.parse(req.url, true);
 
@@ -64,7 +62,7 @@ const server = http.createServer((req, res) => {
   // API
   else if (pathname === "/api") {
     res.writeHead(200, { "Content-type": "application/json" });
-    res.end(quotes);
+    res.end(JSON.stringify(quotesData));
   }
 
   // Not found
