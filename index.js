@@ -52,7 +52,11 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
 
     const cardsHtml = quotesData
-      .map((el) => replaceTemplate(tempCard, el))
+      .map((el) => {
+        const authorClass = slugify(el.author, { lower: true });
+        el.authorClass = authorClass; // Add the authorClass to the quote object
+        return replaceTemplate(tempCard, el); // Use the result of replaceTemplate
+      })
       .join("");
 
     const output = tempOverview.replace("%QUOTE_CARDS%", cardsHtml);
