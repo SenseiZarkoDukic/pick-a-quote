@@ -17,6 +17,6 @@ module.exports = (temp, quote) => {
 
   output = output.replace(/%AUTHOR-CLASS%/g, authorClass);
   console.log(authorClass);
-  console.log(output);
+
   return output;
 };
