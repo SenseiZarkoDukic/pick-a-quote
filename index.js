@@ -43,6 +43,7 @@ const server = http.createServer((req, res) => {
 
     let output = tempRandomQuote.replace("%RANDOM-QUOTE%", randomQuote.quote);
     output = output.replace("%RANDOM-AUTHOR%", randomAuthor);
+
     res.end(output);
     return;
   }

@@ -14,7 +14,6 @@ module.exports = (temp, quote) => {
   output = output.replace(/%AUTHOR%/g, quote.author);
   output = output.replace(/%RANDOM-QUOTE%/g, quote.quote);
   output = output.replace(/%RANDOM-AUTHOR%/g, quote.author);
-
   output = output.replace(/%AUTHOR-CLASS%/g, authorClass);
   console.log(authorClass);
 
