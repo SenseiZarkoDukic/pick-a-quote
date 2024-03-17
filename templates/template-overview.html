@@ -172,6 +172,11 @@
       <div class="cards-container" id="cards-container" style="display: none">
         %QUOTE_CARDS%
       </div>
+      <button class="random_quote__link" id="sort-by-author">
+        Sort quote by Author
+      </button>
+      <input type="text" id="author-input" placeholder="Enter author's name" />
+      <button id="filter-button">Filter by author</button>
     </div>
     <script>
       document
@@ -182,6 +187,34 @@
             cardsContainer.style.display = "block";
           } else cardsContainer.style.display = "none";
         });
+
+      // document
+      //   .getElementById("sort-by-author")
+      //   .addEventListener("click", function () {
+      //     const cardsContainer = document.getElementById("cards-container");
+      //     const cardsArray = Array.from(cardsContainer.children);
+      //     const sortedCards = cardsArray.sort((a, b) => {
+      //       const authorA = a.querySelector(".card__author").textContent;
+      //       const authorB = b.querySelector(".card__author").textContent;
+      //       return authorA.localeCompare(authorB);
+      //     });
+      //     sortedCards.forEach((card) => cardsContainer.appendChild(card));
+      //   });
+
+      // document
+      //   .getElementById("filter-button")
+      //   .addEventListener("click", function () {
+      //     const author = document.getElementById("author-input").value;
+      //     const cards = document.querySelectorAll(".card");
+      //     cards.forEach((card) => {
+      //       const cardAuthor = card.querySelector(".card__author").textContent;
+      //       if (cardAuthor.includes(author)) {
+      //         card.style.display = "block";
+      //       } else {
+      //         card.style.display = "none";
+      //       }
+      //     });
+      //   });
     </script>
   </body>
 </html>
